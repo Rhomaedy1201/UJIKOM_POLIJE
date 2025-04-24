@@ -21,5 +21,16 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('123'),
         ]);
+        $this->call([
+            GolonganSeeder::class,
+            RuangSeeder::class,
+            DosenSeeder::class,
+            MatakuliahSeeder::class,
+            MahasiswaSeeder::class,
+            PengampuSeeder::class,
+            KrsSeeder::class,
+            JadwalAkademikSeeder::class,
+            PresensiAkademikSeeder::class,
+        ]);
     }
 }

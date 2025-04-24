@@ -27,5 +27,11 @@
                 <a class="collapse-item" href="{{ route('user') }}">User</a>
             </div>
         </div>
+        <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Master Data</h6>
+                <a class="collapse-item" href="{{ route('mahasiswa') }}">Mahasiswa</a>
+            </div>
+        </div>
     </li>
 </ul>
