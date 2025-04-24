@@ -12,8 +12,8 @@
                 <h6 class="m-0 font-weight-bold text-primary">Form Basic</h6>
             </div>
             <div class="card-body">
-                <form>
-                    <div class="row mb-20">
+                <form action="" method="">
+                    <div class="row mb-3">
                         <div class="col-lg-6">
                             <label for="nama">Nama</label>
                             <input type="text" name="name" class="form-control" id="nama" placeholder="Masukkan Nama">
