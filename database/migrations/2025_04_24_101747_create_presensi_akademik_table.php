@@ -15,8 +15,15 @@ return new class extends Migration {
             $table->string('hari', 10);
             $table->date('tanggal');
             $table->enum('status_kehadiran', ['hadir', 'tidak']);
+            $table->string('nim', 9);
             $table->string('kode_mk', 10);
             $table->timestamps();
+
+            $table->foreign('nim')
+                ->references('nim')
+                ->on('mahasiswa')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->foreign('kode_mk')
                 ->references('kode_mk')
