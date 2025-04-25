@@ -4,8 +4,10 @@ use App\Http\Controllers\GolonganController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\JadwalAkademikController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MataKuliahController;
+use App\Http\Controllers\PengampuController;
 use App\Http\Controllers\RuangController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,6 +61,20 @@ Route::middleware('auth')->group(function () {
     Route::get('ruang/{id}/edit', [RuangController::class, 'edit'])->name('ruang.edit');
     Route::put('ruang/{id}/update', [RuangController::class, 'update'])->name('ruang.update');
     Route::get('ruang/{id}/destroy', [RuangController::class, 'destroy'])->name('ruang.destroy');
+
+    Route::get('pengampu', [PengampuController::class, 'index'])->name('pengampu');
+    Route::get('pengampu/create', [PengampuController::class, 'create'])->name('pengampu.create');
+    Route::post('pengampu/store', [PengampuController::class, 'store'])->name('pengampu.store');
+    Route::get('pengampu/{id}/edit', [PengampuController::class, 'edit'])->name('pengampu.edit');
+    Route::put('pengampu/{id}/update', [PengampuController::class, 'update'])->name('pengampu.update');
+    Route::get('pengampu/{id}/destroy', [PengampuController::class, 'destroy'])->name('pengampu.destroy');
+
+    Route::get('jadwal_akademik', [JadwalAkademikController::class, 'index'])->name('jadwal_akademik');
+    Route::get('jadwal_akademik/create', [JadwalAkademikController::class, 'create'])->name('jadwal_akademik.create');
+    Route::post('jadwal_akademik/store', [JadwalAkademikController::class, 'store'])->name('jadwal_akademik.store');
+    Route::get('jadwal_akademik/{id}/edit', [JadwalAkademikController::class, 'edit'])->name('jadwal_akademik.edit');
+    Route::put('jadwal_akademik/{id}/update', [JadwalAkademikController::class, 'update'])->name('jadwal_akademik.update');
+    Route::get('jadwal_akademik/{id}/destroy', [JadwalAkademikController::class, 'destroy'])->name('jadwal_akademik.destroy');
 });
 
 require __DIR__ . '/auth.php';

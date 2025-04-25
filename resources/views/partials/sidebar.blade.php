@@ -24,12 +24,13 @@
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Master Data</h6>
-                <a class="collapse-item" href="{{ route('user') }}">User</a>
                 <a class="collapse-item" href="{{ route('mahasiswa') }}">Mahasiswa</a>
                 <a class="collapse-item" href="{{ route('dosen') }}">Dosen</a>
                 <a class="collapse-item" href="{{ route('matakuliah') }}">Mata Kuliah</a>
                 <a class="collapse-item" href="{{ route('golongan') }}">Golongan</a>
                 <a class="collapse-item" href="{{ route('ruang') }}">Ruangan</a>
+                <a class="collapse-item" href="{{ route('pengampu') }}">Pengampu</a>
+                <a class="collapse-item" href="{{ route('jadwal_akademik') }}">Jadwal Akademik</a>
             </div>
         </div>
     </li>
