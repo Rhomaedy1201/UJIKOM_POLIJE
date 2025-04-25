@@ -9,6 +9,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\PengampuController;
 use App\Http\Controllers\RuangController;
+use App\Http\Controllers\KrsController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -75,6 +76,13 @@ Route::middleware('auth')->group(function () {
     Route::get('jadwal_akademik/{id}/edit', [JadwalAkademikController::class, 'edit'])->name('jadwal_akademik.edit');
     Route::put('jadwal_akademik/{id}/update', [JadwalAkademikController::class, 'update'])->name('jadwal_akademik.update');
     Route::get('jadwal_akademik/{id}/destroy', [JadwalAkademikController::class, 'destroy'])->name('jadwal_akademik.destroy');
+
+    Route::get('krs', [KrsController::class, 'index'])->name('krs');
+    Route::get('krs/create', [KrsController::class, 'create'])->name('krs.create');
+    Route::post('krs/store', [KrsController::class, 'store'])->name('krs.store');
+    Route::get('krs/{id}/edit', [KrsController::class, 'edit'])->name('krs.edit');
+    Route::put('krs/{id}/update', [KrsController::class, 'update'])->name('krs.update');
+    Route::get('krs/{id}/destroy', [KrsController::class, 'destroy'])->name('krs.destroy');
 });
 
 require __DIR__ . '/auth.php';
