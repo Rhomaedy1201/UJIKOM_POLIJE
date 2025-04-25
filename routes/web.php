@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\DosenController;
 use App\Http\Controllers\GolonganController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\RuangController;
@@ -30,21 +30,21 @@ Route::middleware('auth')->group(function () {
     Route::post('/mahasiswa/store', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
     Route::get('/mahasiswa/{id}/edit', [MahasiswaController::class, 'edit'])->name('mahasiswa.edit');
     Route::put('/mahasiswa/{id}/update', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
-    Route::delete('/mahasiswa/{id}/destroy', [MahasiswaController::class, 'destroy'])->name('mahasiswa.destroy');
+    Route::get('/mahasiswa/{id}/destroy', [MahasiswaController::class, 'destroy'])->name('mahasiswa.destroy');
 
     Route::get('dosen', [DosenController::class, 'index'])->name('dosen');
     Route::get('dosen/create', [DosenController::class, 'create'])->name('dosen.create');
     Route::post('dosen/store', [DosenController::class, 'store'])->name('dosen.store');
     Route::get('dosen/{id}/edit', [DosenController::class, 'edit'])->name('dosen.edit');
     Route::put('dosen/{id}/update', [DosenController::class, 'update'])->name('dosen.update');
-    Route::delete('dosen/{id}/destroy', [DosenController::class, 'destroy'])->name('dosen.destroy');
+    Route::get('dosen/{id}/destroy', [DosenController::class, 'destroy'])->name('dosen.destroy');
 
     Route::get('matakuliah', [MataKuliahController::class, 'index'])->name('matakuliah');
     Route::get('matakuliah/create', [MataKuliahController::class, 'create'])->name('matakuliah.create');
     Route::post('matakuliah/store', [MataKuliahController::class, 'store'])->name('matakuliah.store');
     Route::get('matakuliah/{id}/edit', [MataKuliahController::class, 'edit'])->name('matakuliah.edit');
     Route::put('matakuliah/{id}/update', [MataKuliahController::class, 'update'])->name('matakuliah.update');
-    Route::delete('matakuliah/{id}/destroy', [MataKuliahController::class, 'destroy'])->name('matakuliah.destroy');
+    Route::get('matakuliah/{id}/destroy', [MataKuliahController::class, 'destroy'])->name('matakuliah.destroy');
 
     Route::get('golongan', [GolonganController::class, 'index'])->name('golongan');
     Route::get('golongan/create', [GolonganController::class, 'create'])->name('golongan.create');
