@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\RuangRepository;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class RuangController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    protected $param;
+
+    public function __construct(RuangRepository $ruang)
+    {
+        $this->param = $ruang;
+    }
+
     public function index()
     {
-        //
+        $ruang = $this->param->index();
+        return view("pages.ruangan.index", compact("ruang"));
     }
 
     /**
@@ -19,7 +26,7 @@ class RuangController extends Controller
      */
     public function create()
     {
-        //
+        return view("pages.ruangan.create");
     }
 
     /**
@@ -27,7 +34,14 @@ class RuangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $this->param->store($request->all());
+            return redirect()->route('ruang')->with('success', 'Data ruang berhasil ditambahkan!');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator)->withInput();
+        } catch (\RuntimeException $e) {
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
+        }
     }
 
     /**
@@ -43,7 +57,8 @@ class RuangController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ruang = $this->param->find($id);
+        return view("pages.ruangan.edit", compact("ruang"));
     }
 
     /**
@@ -51,7 +66,14 @@ class RuangController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $this->param->update($request->all(), $id);
+            return redirect()->route('ruang')->with('success', 'Data ruang berhasil diubah!');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator)->withInput();
+        } catch (\RuntimeException $e) {
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
+        }
     }
 
     /**
@@ -59,6 +81,13 @@ class RuangController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $this->param->delete($id);
+            return redirect()->route('ruang')->with('success', 'Data ruang berhasil hapus');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator)->withInput();
+        } catch (\RuntimeException $e) {
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
+        }
     }
 }
