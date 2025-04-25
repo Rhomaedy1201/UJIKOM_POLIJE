@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('alamat', 150);
             $table->string('no_hp', 12);
             $table->string('semester', 2);
+            $table->string('password');
             $table->unsignedBigInteger("id_gol");
             $table->timestamps();
 
