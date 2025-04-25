@@ -3,6 +3,7 @@
 <script src="{{asset('template/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 <script src="{{asset('template/js/ruang-admin.min.js')}}"></script>
 <script src="{{asset('template/vendor/chart.js/Chart.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {{-- <script src="{{asset('template/js/demo/chart-area-demo.js')}}"></script> --}}
 
 <!-- Page level plugins -->

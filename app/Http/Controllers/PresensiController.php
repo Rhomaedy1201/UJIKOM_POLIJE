@@ -8,6 +8,8 @@ use App\Repositories\PresensiRepository;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class PresensiController extends Controller
 {
@@ -55,7 +57,19 @@ class PresensiController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
+        $this->param->store($request);
+        Alert::success("Berhasil", "Data Berhasil di Simpan.");
+        return redirect()->route('presensi')->with('success', 'Presensi Berhasil!!');
+        
 
     }
+    public function riwayat()
+    {   
+        // menampilkan presensi akademik berdasarkan nim
+        $presensis = PresensiAkademik::where('nim', Auth::user()->nim)->get();
+        // dd($presensis);
 
+        return view("pages.presensi.riwayat", compact("presensis"));
+    }
 }

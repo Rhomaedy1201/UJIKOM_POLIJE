@@ -48,6 +48,11 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Presensi</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('riwayat_presensi') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Riwayat Presensi</span></a>
+    </li>
     <hr class="sidebar-divider">
     @endif
 </ul>

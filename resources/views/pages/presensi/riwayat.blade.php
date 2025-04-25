@@ -13,7 +13,7 @@
                 </div>
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
-                        
+
                         <thead class="thead-light">
                             <tr>
                                 <th>No</th>
@@ -24,27 +24,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($jadwal as $item)
+                            @foreach ($presensis as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->hari }}</td>
-                                    <td>{{ $item->matakuliah->nama_mk }}</td>
-                                    <td>{{ $item->golongan->nama_gol }}</td>
-                                    <form action="{{ route('presensi.store') }} " method="POST">
-                                        @csrf
+                                    <td>{{ $item->tanggal }}</td>
+                                    <td>{{ $item->kode_mk }}</td>
 
-                                        <td><button type="submit" class="btn btn-sm btn-success">Presensi</button>
-                                            <input type="hidden" name="hari" value="{{ $item->hari }}">
-                                            
-                                            <input type="hidden" name="tanggal" value="{{ now()->format('Y-m-d') }}">
-                                            <input type="hidden" name="status_kehadiran" value="hadir">
-                                            <input type="hidden" name="nim" value="{{ Auth::user()->nim }}">
-                                            <input type="hidden" name="kode_mk" value="{{ $item->kode_mk }}">
-                                        </td>
-                                    </form>
+                                    <td
+                                        class="btn btn-sm {{ $item->status_kehadiran == 'hadir' ? 'btn-success' : 'btn-danger' }}">
+                                        {{ $item->status_kehadiran }}
+                                    </td>
+
                                 </tr>
                             @endforeach
                         </tbody>
+
                     </table>
                 </div>
                 <div class="card-footer"></div>

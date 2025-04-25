@@ -91,6 +91,8 @@ Route::middleware(['auth:web', 'verified'])->group(function () {
 Route::middleware('auth:mahasiswa')->group(function () {
     Route::get('/dashboard_mhs', [DashboardMhsController::class, 'index'])->name('dashboard_mhs');
     Route::get('presensi', [PresensiController::class, 'index'])->name('presensi');
+    Route::post('presensi/store', [PresensiController::class, 'store'])->name('presensi.store');
+    Route::get('riwayat-presensi', [PresensiController::class, 'riwayat'])->name('riwayat_presensi');
 });
 
 require __DIR__ . '/auth.php';
