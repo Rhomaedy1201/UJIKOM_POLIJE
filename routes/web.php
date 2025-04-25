@@ -10,6 +10,7 @@ use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\PengampuController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\KrsController;
+use App\Http\Controllers\PresensiController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -83,6 +84,8 @@ Route::middleware('auth')->group(function () {
     Route::get('krs/{id}/edit', [KrsController::class, 'edit'])->name('krs.edit');
     Route::put('krs/{id}/update', [KrsController::class, 'update'])->name('krs.update');
     Route::get('krs/{id}/destroy', [KrsController::class, 'destroy'])->name('krs.destroy');
+
+    Route::get('presensi', [PresensiController::class, 'index'])->name('presensi');
 });
 
 require __DIR__ . '/auth.php';
