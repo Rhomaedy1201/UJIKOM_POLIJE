@@ -39,7 +39,7 @@ class AuthenticatedSessionController extends Controller
             // Login menggunakan email (User)
             if (Auth::attempt(['email' => $login, 'password' => $password])) {
                 $request->session()->regenerate();
-                return redirect()->intended(route('dashboard', absolute: false));
+                return redirect()->intended(route('dashboard'));
             }
         } else {
             // Login menggunakan NIM (Mahasiswa)
@@ -47,8 +47,11 @@ class AuthenticatedSessionController extends Controller
 
             if ($mahasiswa && Hash::check($password, $mahasiswa->password)) {
                 Auth::guard('mahasiswa')->login($mahasiswa); // Login dengan guard mahasiswa
+                // dd(Auth::guard('mahasiswa')->user());
                 $request->session()->regenerate();
-                return redirect()->intended(route('dashboard_mhs', absolute: false));
+                // return redirect()->intended(route('mahasiswa.dashboard_mhs'));
+                return redirect()->intended(route('dashboard_mhs'));
+
             }
         }
 

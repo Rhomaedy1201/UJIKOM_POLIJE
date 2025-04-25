@@ -88,8 +88,8 @@ Route::middleware(['auth:web', 'verified'])->group(function () {
 
 });
 
-Route::prefix('mahasiswa')->middleware('auth:mahasiswa')->group(function () {
-    Route::get('/', [DashboardMhsController::class, 'index'])->name('dashboard_mhs');
+Route::middleware('auth:mahasiswa')->group(function () {
+    Route::get('/dashboard_mhs', [DashboardMhsController::class, 'index'])->name('dashboard_mhs');
     Route::get('presensi', [PresensiController::class, 'index'])->name('presensi');
 });
 

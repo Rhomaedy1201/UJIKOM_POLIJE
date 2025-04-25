@@ -14,8 +14,11 @@ class Mahasiswa extends Authenticatable
         "alamat",
         "no_hp",
         "semester",
-        "password",
         "id_gol",
+    ];
+
+    protected $hidden = [
+        "password",
     ];
 
     public function golongan()
