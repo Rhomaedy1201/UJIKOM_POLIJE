@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Mahasiswa;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -22,13 +25,34 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        $request->authenticate();
+        $request->validate([
+            'login' => 'required|string', // Bisa NIM atau Email
+            'password' => 'required|string',
+        ]);
 
-        $request->session()->regenerate();
+        $login = $request->login;
+        $password = $request->password;
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
+            // Login menggunakan email (User)
+            if (Auth::attempt(['email' => $login, 'password' => $password])) {
+                $request->session()->regenerate();
+                return redirect()->intended(route('dashboard', absolute: false));
+            }
+        } else {
+            // Login menggunakan NIM (Mahasiswa)
+            $mahasiswa = Mahasiswa::where('nim', $login)->first();
+
+            if ($mahasiswa && Hash::check($password, $mahasiswa->password)) {
+                Auth::guard('mahasiswa')->login($mahasiswa); // Login dengan guard mahasiswa
+                $request->session()->regenerate();
+                return redirect()->intended(route('dashboard_mhs', absolute: false));
+            }
+        }
+
+        return redirect()->route('login')->with('error', 'Email/NIM atau Password salah!');
     }
 
     /**

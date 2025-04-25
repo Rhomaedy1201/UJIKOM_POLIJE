@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardMhsController;
 use App\Http\Controllers\GolonganController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -21,7 +22,7 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth:web', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -85,6 +86,10 @@ Route::middleware('auth')->group(function () {
     Route::put('krs/{id}/update', [KrsController::class, 'update'])->name('krs.update');
     Route::get('krs/{id}/destroy', [KrsController::class, 'destroy'])->name('krs.destroy');
 
+});
+
+Route::prefix('mahasiswa')->middleware('auth:mahasiswa')->group(function () {
+    Route::get('/', [DashboardMhsController::class, 'index'])->name('dashboard_mhs');
     Route::get('presensi', [PresensiController::class, 'index'])->name('presensi');
 });
 
