@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Dashboard')
-@section('title2', 'Dashboard')
+@section('title', 'Mata Kuliah')
+@section('title2', 'Mata Kuliah')
 @section('titlePage', 'Home')
 
 @section('content')
@@ -9,15 +9,15 @@
         <div class="col-lg-12">
             <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Table Mata Kuliah</h6>
                     <a href="{{ route('matakuliah.create') }}" class="btn btn-primary mb-1">Tambah</a>
                 </div>
                 @if (session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
+                    <div class="alert alert-success mx-3">{{ session('success') }}</div>
                 @endif
 
                 @if (session('error'))
-                    <div class="alert alert-danger">{{ session('error') }}</div>
+                    <div class="alert alert-danger mx-3">{{ session('error') }}</div>
                 @endif
 
                 @if ($errors->any())

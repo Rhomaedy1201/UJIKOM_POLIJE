@@ -32,7 +32,7 @@
                 <a class="collapse-item" href="{{ route('ruang') }}">Ruangan</a>
                 <a class="collapse-item" href="{{ route('pengampu') }}">Pengampu</a>
                 <a class="collapse-item" href="{{ route('jadwal_akademik') }}">Jadwal Akademik</a>
-                <a class="collapse-item" href="{{ route('krs') }}">Jadwal Akademik</a>
+                <a class="collapse-item" href="{{ route('krs') }}">KRS</a>
             </div>
         </div>
     </li>

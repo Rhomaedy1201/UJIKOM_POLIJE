@@ -15,6 +15,7 @@ class Mahasiswa extends Authenticatable
         "no_hp",
         "semester",
         "id_gol",
+        "password",
     ];
 
     protected $hidden = [

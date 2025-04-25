@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Mahasiswa;
 use App\Models\Golongan;
+use Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -41,7 +42,11 @@ class MahasiswaRepository
         }
 
         try {
-            return $this->model->create($validator->validated());
+            $validated = $validator->validated();
+
+            $validated['password'] = Hash::make($validated['nim']);
+            return $this->model->create($validated);
+
         } catch (\Exception $e) {
             throw new \RuntimeException("Gagal menambahkan data mahasiswa: " . $e->getMessage());
         }

@@ -12,11 +12,11 @@
                 </div>
                 <div class="card-body">
                     @if (session('success'))
-                        <div class="alert alert-success">{{ session('success') }}</div>
+                        <div class="alert alert-success mx-3">{{ session('success') }}</div>
                     @endif
 
                     @if (session('error'))
-                        <div class="alert alert-danger">{{ session('error') }}</div>
+                        <div class="alert alert-danger mx-3">{{ session('error') }}</div>
                     @endif
 
                     @if ($errors->any())

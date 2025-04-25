@@ -32,11 +32,11 @@ class MahasiswaController extends Controller
     {
         try {
             $this->params->store($request->all());
-            return redirect()->back()->with('success', 'Data mahasiswa berhasil ditambahkan!');
+            return redirect()->route('mahasiswa')->with('success', 'Data mahasiswa berhasil ditambahkan!');
         } catch (ValidationException $e) {
-            return redirect()->back()->withErrors($e->validator)->withInput();
+            return redirect()->route('mahasiswa')->withErrors($e->validator)->withInput();
         } catch (\RuntimeException $e) {
-            return redirect()->back()->with('error', $e->getMessage())->withInput();
+            return redirect()->route('mahasiswa')->with('error', $e->getMessage())->withInput();
         }
     }
 
@@ -65,11 +65,11 @@ class MahasiswaController extends Controller
 
         try {
             $this->params->update($mahasiswa, $request->all());
-            return redirect()->back()->with('success', 'Data mahasiswa berhasil diperbarui!');
+            return redirect()->route('mahasiswa')->with('success', 'Data mahasiswa berhasil diperbarui!');
         } catch (ValidationException $e) {
-            return redirect()->back()->withErrors($e->validator)->withInput();
+            return redirect()->route('mahasiswa')->withErrors($e->validator)->withInput();
         } catch (\RuntimeException $e) {
-            return redirect()->back()->with('error', $e->getMessage())->withInput();
+            return redirect()->route('mahasiswa')->with('error', $e->getMessage())->withInput();
         }
     }
 
@@ -78,9 +78,9 @@ class MahasiswaController extends Controller
     {
         try {
             $this->params->delete($id);
-            return redirect()->back()->with('success', 'Data mahasiswa berhasil dihapus!');
+            return redirect()->route('mahasiswa')->with('success', 'Data mahasiswa berhasil dihapus!');
         } catch (\RuntimeException $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+            return redirect()->route('mahasiswa')->with('error', $e->getMessage());
         }
     }
 
