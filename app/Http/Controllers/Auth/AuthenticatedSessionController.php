@@ -36,21 +36,17 @@ class AuthenticatedSessionController extends Controller
         $password = $request->password;
 
         if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
-            // Login menggunakan email (User)
             if (Auth::attempt(['email' => $login, 'password' => $password])) {
                 $request->session()->regenerate();
-                return redirect()->intended(route('dashboard'));
+                return redirect()->route('dashboard');
             }
         } else {
             // Login menggunakan NIM (Mahasiswa)
             $mahasiswa = Mahasiswa::where('nim', $login)->first();
-
             if ($mahasiswa && Hash::check($password, $mahasiswa->password)) {
-                Auth::guard('mahasiswa')->login($mahasiswa); // Login dengan guard mahasiswa
-                // dd(Auth::guard('mahasiswa')->user());
+                Auth::guard('mahasiswa')->login($mahasiswa);
                 $request->session()->regenerate();
-                // return redirect()->intended(route('mahasiswa.dashboard_mhs'));
-                return redirect()->intended(route('dashboard_mhs'));
+                return redirect()->route('dashboard_mhs');
 
             }
         }

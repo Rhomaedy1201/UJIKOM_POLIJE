@@ -18,8 +18,14 @@ class Mahasiswa extends Authenticatable
     ];
 
     protected $hidden = [
-        "password",
+        'password',
     ];
+
+    // Gunakan NIP sebagai username
+    public function getAuthIdentifierName()
+    {
+        return 'nim';
+    }
 
     public function golongan()
     {

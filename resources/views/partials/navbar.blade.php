@@ -9,7 +9,8 @@
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="{{ asset('template/img/boy.png') }}"
                     style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">{{ Auth::user() }}</span>
+                <span class="ml-2 d-none d-lg-inline text-white small">{{ Auth::user()->name ? Auth::user()->name :
+                    Auth::user()->nama }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <div class="dropdown-divider"></div>
