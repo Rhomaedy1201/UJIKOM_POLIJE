@@ -51,14 +51,14 @@ Route::middleware('auth')->group(function () {
     Route::post('golongan/store', [GolonganController::class, 'store'])->name('golongan.store');
     Route::get('golongan/{id}/edit', [GolonganController::class, 'edit'])->name('golongan.edit');
     Route::put('golongan/{id}/update', [GolonganController::class, 'update'])->name('golongan.update');
-    Route::delete('golongan/{id}/destroy', [GolonganController::class, 'destroy'])->name('golongan.destroy');
+    Route::get('golongan/{id}/destroy', [GolonganController::class, 'destroy'])->name('golongan.destroy');
 
     Route::get('ruang', [RuangController::class, 'index'])->name('ruang');
     Route::get('ruang/create', [RuangController::class, 'create'])->name('ruang.create');
     Route::post('ruang/store', [RuangController::class, 'store'])->name('ruang.store');
     Route::get('ruang/{id}/edit', [RuangController::class, 'edit'])->name('ruang.edit');
     Route::put('ruang/{id}/update', [RuangController::class, 'update'])->name('ruang.update');
-    Route::delete('ruang/{id}/destroy', [RuangController::class, 'destroy'])->name('ruang.destroy');
+    Route::get('ruang/{id}/destroy', [RuangController::class, 'destroy'])->name('ruang.destroy');
 });
 
 require __DIR__ . '/auth.php';
