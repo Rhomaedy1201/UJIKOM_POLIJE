@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\JadwalAkademik;
 use App\Models\PresensiAkademik;
+use App\Repositories\PresensiRepository;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PresensiController extends Controller
 {
-    // protected $param;
+    protected $param;
 
-    // public function __construct(JadwalAkademik $jadwalAkademik)
-    // {
-    //     $this->param = $jadwalAkademik;
-    // }
+    public function __construct(PresensiRepository $presensiRepository)
+    {
+        $this->param = $presensiRepository;
+    }
     public function index()
     {
         $days = [
@@ -50,6 +51,11 @@ class PresensiController extends Controller
         }
 
         return view("pages.presensi.index", compact("jadwal"));
+    }
+
+    public function store(Request $request)
+    {
+
     }
 
 }
