@@ -23,13 +23,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($jadwal as $item)
                         <tr>
-                            <td><a href="#">RA0449</a></td>
-                            <td>Udin Wayang</td>
-                            <td>Nasi Padang</td>
-                            <td><span class="badge badge-success">Delivered</span></td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->hari }}</td>
+                            <td>{{ $item->matakuliah->nama_mk }}</td>
+                            <td>{{ $item->golongan->nama_gol }}</td>
                             <td><a href="#" class="btn btn-sm btn-success">Presensi</a></td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
