@@ -23,5 +23,6 @@ class PresensiRepository
             "kode_mk" => $data["kode_mk"],
         ]);
     }
+    
 
 }

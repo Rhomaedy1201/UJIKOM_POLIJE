@@ -18,9 +18,9 @@
                             <tr>
                                 <th>No</th>
                                 <th>Hari</th>
-                                <th>Nama Matkul</th>
+                                <th>Tanggal</th>
                                 <th>Golongan</th>
-                                <th>Aksi</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,12 +29,24 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->hari }}</td>
                                     <td>{{ $item->tanggal }}</td>
-                                    <td>{{ $item->kode_mk }}</td>
+                                    <td>{{ $item->matakuliah->nama_mk }}</td>
 
-                                    <td
-                                        class="btn btn-sm {{ $item->status_kehadiran == 'hadir' ? 'btn-success' : 'btn-danger' }}">
-                                        {{ $item->status_kehadiran }}
+                                    @php
+                                        $btnClass = match ($item->status_kehadiran) {
+                                            'hadir' => 'btn-success',
+                                            'alpa' => 'btn-danger',
+                                            'izin' => 'btn-info',
+                                            default => 'btn-secondary',
+                                        };
+                                    @endphp
+
+                                    <td>
+
+                                        <button type="submit"
+                                            class="btn btn-sm {{ $btnClass }} mt-1">{{ ucfirst($item->status_kehadiran) }}</button>
                                     </td>
+
+
 
                                 </tr>
                             @endforeach
